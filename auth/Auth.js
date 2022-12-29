@@ -44,6 +44,10 @@ const Mware = async (req, res, next) => {
 
 // login route
 router.post("/login", Mware, async (req, res) => {
+  res.setHeader("Content-Type", "application/json");
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Credentials", "true");
+  res.setHeader("Set-Cookie", "portfolio=sasanka1214");
   if (req.user) {
     res.status(200).json({ user: req.user });
   } else {
