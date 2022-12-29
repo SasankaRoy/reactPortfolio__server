@@ -43,6 +43,7 @@ app.use(
     cookie: {
       expires: new Date(Date.now() + 86400000),
       // domain: "localhost:3000",
+      sameSite: "none",
     },
   })
 );
