@@ -33,8 +33,8 @@ router.post("/signin", async (req, res) => {
 });
 
 const Mware = async (req, res, next) => {
-  if (req.session.userToken) {
-    const decoded = jwt.verify(req.session.userToken, process.env.SECRET_KEY);
+  if (req.body.userToken) {
+    const decoded = jwt.verify(req.body.userToken, process.env.SECRET_KEY);
     const findUser = await User.findById(decoded.id);
     req.user = findUser;
     next();
@@ -47,7 +47,7 @@ router.post("/login", Mware, async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  // res.setHeader("Set-Cookie", "portfolio=sasanka1214");
+
   if (req.user) {
     res.status(200).json({ user: req.user });
   } else {
@@ -65,10 +65,13 @@ router.post("/login", Mware, async (req, res) => {
             {
               id: user._id,
             },
-            process.env.SECRET_KEY
+            process.env.SECRET_KEY,
+            {
+              expiresIn: "1day",
+            }
           );
           req.session.userToken = token;
-          res.status(200).json({ user });
+          res.status(200).json({ user, token });
 
           return;
         } else {
