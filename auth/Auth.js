@@ -47,7 +47,7 @@ router.post("/login", Mware, async (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
   res.setHeader("Access-Control-Allow-Credentials", "true");
-  res.setHeader("Set-Cookie", "portfolio=sasanka1214");
+  // res.setHeader("Set-Cookie", "portfolio=sasanka1214");
   if (req.user) {
     res.status(200).json({ user: req.user });
   } else {

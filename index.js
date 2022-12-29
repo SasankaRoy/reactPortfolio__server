@@ -42,7 +42,7 @@ app.use(
     maxAge: 86400000,
     cookie: {
       expires: new Date(Date.now() + 86400000),
-      domain: "localhost:3000",
+      // domain: "localhost:3000",
     },
   })
 );
