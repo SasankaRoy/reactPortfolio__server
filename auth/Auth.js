@@ -23,7 +23,7 @@ router.post("/signin", async (req, res) => {
       password: encodedPassword,
     });
     newUser.save();
-    // req.session.userName = newUser.name;
+
     res.status(200).json({ success: "account has been created successfully" });
 
     return;
@@ -39,14 +39,13 @@ const Mware = async (req, res, next) => {
     req.user = findUser;
     next();
   } else next();
-  // console.log(req.session.userToken);
 };
 
 // login route
 router.post("/login", Mware, async (req, res) => {
-  res.setHeader("Content-Type", "application/json");
-  res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
-  res.setHeader("Access-Control-Allow-Credentials", "true");
+  // res.setHeader("Content-Type", "application/json");
+  // res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+  // res.setHeader("Access-Control-Allow-Credentials", "true");
 
   if (req.user) {
     res.status(200).json({ user: req.user });
