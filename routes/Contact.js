@@ -1,6 +1,15 @@
 const router = require("express").Router();
 const contact = require("../Database/Contact");
 
+router.get("/contact", async (req, res) => {
+  try {
+    const sendContact = await contact.find();
+    res.status(200).json({ sendContact });
+  } catch (error) {
+    console.log(error);
+  }
+});
+
 router.post("/contact/update", async (req, res) => {
   try {
     const findOne = await contact.find({ id: req.body.id });
