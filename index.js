@@ -51,7 +51,7 @@ app.use(
 
 app.use(
   CORS({
-    origin: "http://localhost:3000",
+    origin: "https://portfolio-coral-nine-37.vercel.app",
     credentials: true,
   })
 );
