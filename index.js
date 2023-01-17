@@ -55,6 +55,7 @@ app.use(
       "https://portfolio-coral-nine-37.vercel.app",
       "https://portfolio-sasanka.vercel.app",
       "http://localhost:3000",
+      "http://192.168.29.68:3000",
     ],
     credentials: true,
   })
