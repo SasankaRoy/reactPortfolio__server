@@ -54,6 +54,7 @@ app.use(
     origin: [
       "https://portfolio-coral-nine-37.vercel.app",
       "https://portfolio-sasanka.vercel.app",
+      "http://localhost:3000",
     ],
     credentials: true,
   })
