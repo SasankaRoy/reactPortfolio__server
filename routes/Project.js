@@ -19,6 +19,7 @@ router.post("/project/updata", async (req, res) => {
       buildBy: req.body.text.buildBy,
       techImg: req.body.Images.techImg,
       projectDescription: req.body.text.projectDescription,
+      projectLink: req.body.text.projectLink,
     });
     await newProject.save();
     res.status(200).json({ success: "project added successfully😊😊" });

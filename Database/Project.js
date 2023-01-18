@@ -34,3 +34,9 @@ const ProjectSchema = new mongoose.Schema(
   }
 );
 module.exports = mongoose.model("project", ProjectSchema);
+
+// It Is A Full Stack MERN Project.
+// In Frontend I Used Reat.Js, Tailwind.Css, Redux, Etc.
+// In Backend I Used Node.Js, Express.Js, Mongodb, Mongoose, Etc.
+// In This Webapp We Can Chat, Make Friends, Follow Them, View Their Post And At The Same Time Like And Comment On It.
+// It Is Totally Safe And Secure In Terms Of Privacy, Only The Authenticated Users Are Allowed And No Personal Details Are Leaked.
