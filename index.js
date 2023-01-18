@@ -24,7 +24,7 @@ dotenv.config();
 
 // database
 require("./Database/conn");
-app.use("/image", express.static(path.join(__dirname, "public/images")));
+app.use("/image", express.static(path.join(__dirname, "public/images"))); //image link
 
 const store = new mongoSession({
   uri: process.env.DATABASE,
@@ -42,7 +42,6 @@ app.use(
     maxAge: 86400000,
     cookie: {
       expires: new Date(Date.now() + 86400000),
-      // domain: "localhost:3000",
       sameSite: "none",
       secure: "true",
     },
@@ -65,12 +64,14 @@ app.use(helmet());
 app.use(morgan("common"));
 app.use(express.json());
 app.use(Cookie());
-app.use("/auth", Auth);
-app.use("/api", hero);
-app.use("/api", about);
-app.use("/api", project);
-app.use("/api", skill);
-app.use("/api", contact);
+app.use("/auth", Auth); //the auth's router
+app.use("/api", hero); // hero page router
+app.use("/api", about); // hero page router
+app.use("/api", project); // project page router
+app.use("/api", skill); // skill page router
+app.use("/api", contact); // contact page router
+
+// image uploader storage...
 
 const storage = multer.diskStorage({
   destination: (req, file, cd) => {
@@ -81,7 +82,7 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage });
-// upload.
+// upload route...
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
     return res.status(200).json("file uploaded successfully");
@@ -89,6 +90,8 @@ app.post("/api/upload", upload.single("file"), (req, res) => {
     console.log(error);
   }
 });
+
+// listenning to the server
 
 app.listen(process.env.PORT || port, () => {
   console.log(`listening on port ${port}`);

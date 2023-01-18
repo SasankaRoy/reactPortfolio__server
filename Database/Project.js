@@ -25,6 +25,9 @@ const ProjectSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    projectLink: {
+      type: String,
+    },
   },
   {
     timestamps: true,
