@@ -11,8 +11,7 @@ router.post("/skill/upload", async (req, res) => {
         { skillImg: req.body.Image },
         {
           $set: {
-            skillPerct: req.body.Status.status,
-            direction: req.body.Status.direction,
+            skillPerct: req.body.Status,
           },
         },
         { new: true }
