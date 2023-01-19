@@ -9,7 +9,12 @@ router.post("/skill/upload", async (req, res) => {
       // update
       const updatedValue = await skill.findOneAndUpdate(
         { skillImg: req.body.Image },
-        { $set: { skillPerct: req.body.Status } },
+        {
+          $set: {
+            skillPerct: req.body.Status.status,
+            direction: req.body.Status.direction,
+          },
+        },
         { new: true }
       );
 
