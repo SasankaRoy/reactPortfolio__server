@@ -14,6 +14,9 @@ const SkillSchema = new mongoose.Schema(
       required: true,
       max: 100,
     },
+    direction: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

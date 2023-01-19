@@ -5,13 +5,14 @@ router.post("/skill/upload", async (req, res) => {
   try {
     const find = await skill.find({ skillImg: req.body.Image });
 
+    console.log(req.body);
     if (find.length > 0) {
       // update
       const updatedValue = await skill.findOneAndUpdate(
         { skillImg: req.body.Image },
         {
           $set: {
-            skillPerct: req.body.Status,
+            skillPerct: req.body.Status.status,
           },
         },
         { new: true }
@@ -23,7 +24,8 @@ router.post("/skill/upload", async (req, res) => {
       const newSkill = new skill({
         id: req.body.id,
         skillImg: req.body.Image,
-        skillPerct: req.body.Status,
+        skillPerct: req.body.Status.status,
+        direction: req.body.Status.direction,
       });
       await newSkill.save();
       res.status(200).json({ success: "new skill created" });
